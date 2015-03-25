@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class FISLocation;
+
 @interface FISTriviaTableViewController : UITableViewController
-@property (strong, nonatomic) NSArray *trivia;
+@property (strong, nonatomic) FISLocation *location;
 
 @end

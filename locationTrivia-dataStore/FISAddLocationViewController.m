@@ -9,11 +9,14 @@
 #import "FISAddLocationViewController.h"
 #import "FISLocation.h"
 #import "FISLocationsDataStore.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface FISAddLocationViewController ()
+@interface FISAddLocationViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *latitudeField;
 @property (weak, nonatomic) IBOutlet UITextField *longitudeField;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *currentLocation;
 - (IBAction)submitButtonTapped:(id)sender;
 - (IBAction)cancelButtonTapped:(id)sender;
 
@@ -24,7 +27,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = 50;
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:YES];
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,16 +49,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - CLLocationManager
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.currentLocation = [locations lastObject];
 }
-*/
+
+#pragma mark - IBActions
+
+- (IBAction)useCurrentLocation:(id)sender
+{
+    self.latitudeField.text = [NSString stringWithFormat:@"%f", self.currentLocation.coordinate.latitude];
+    self.longitudeField.text = [NSString stringWithFormat:@"%f", self.currentLocation.coordinate.longitude];
+}
 
 - (IBAction)submitButtonTapped:(id)sender {
     NSNumber *latitude = [NSNumber numberWithInteger:[self.latitudeField.text integerValue]];

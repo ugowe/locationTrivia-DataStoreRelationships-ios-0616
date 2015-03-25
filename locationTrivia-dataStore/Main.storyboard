@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SAR-7n-Hfp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="SAR-7n-Hfp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Locations Table View Controller-->
@@ -24,7 +26,7 @@
                                             <rect key="frame" x="15" y="11" width="33" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1eH-WV-M3D">
@@ -72,25 +74,21 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5a8-ws-1Dw">
                                 <rect key="frame" x="20" y="77" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-p0-95b">
                                 <rect key="frame" x="20" y="115" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V2-b3-c2F">
                                 <rect key="frame" x="20" y="153" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d5-9p-VH7">
                                 <rect key="frame" x="20" y="243" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -100,12 +98,18 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apu-Sa-2Z9">
                                 <rect key="frame" x="20" y="286" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="Dom-NK-sD9" eventType="touchUpInside" id="ZSs-Ak-ftT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZH-yj-QcL">
+                                <rect key="frame" x="16" y="191" width="288" height="22"/>
+                                <state key="normal" title="Use Current Location"/>
+                                <connections>
+                                    <action selector="useCurrentLocation:" destination="Dom-NK-sD9" eventType="touchUpInside" id="OhB-lk-WAg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -119,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cj1-dy-OyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="-800"/>
+            <point key="canvasLocation" x="519" y="-738"/>
         </scene>
         <!--Trivia Table View Controller-->
         <scene sceneID="qct-6z-LeM">
@@ -141,7 +145,7 @@
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -153,11 +157,79 @@
                             <outlet property="delegate" destination="tUP-So-DAg" id="CMg-iP-KcY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aEH-FB-czp"/>
+                    <navigationItem key="navigationItem" id="aEH-FB-czp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="C7a-Ne-h6Z">
+                            <connections>
+                                <segue destination="NCG-Tu-7Xa" kind="modal" identifier="addTrivia" id="qOP-Yy-1go"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addTriviaButton" destination="C7a-Ne-h6Z" id="quW-YX-7eU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlz-wJ-WHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044" y="84"/>
+        </scene>
+        <!--Add Trivia View Controller-->
+        <scene sceneID="Z2p-q4-nKz">
+            <objects>
+                <viewController id="NCG-Tu-7Xa" customClass="FISAddTriviaViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2o-eh-W5x"/>
+                        <viewControllerLayoutGuide type="bottom" id="XIn-fD-AWu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L5v-dL-9bJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-Ag-6Mr">
+                                <rect key="frame" x="16" y="189" width="288" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Trivium TextField"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDq-wH-0xE">
+                                <rect key="frame" x="143" y="269" width="34" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Save Button"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="NCG-Tu-7Xa" eventType="touchUpInside" id="uvR-JV-cfa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8C-qM-RUS">
+                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Cancel Button"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="NCG-Tu-7Xa" eventType="touchUpInside" id="cx3-PZ-Eqy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tDq-wH-0xE" firstAttribute="centerY" secondItem="L5v-dL-9bJ" secondAttribute="centerY" id="NIj-pV-hsM"/>
+                            <constraint firstItem="EQD-Ag-6Mr" firstAttribute="centerY" secondItem="L5v-dL-9bJ" secondAttribute="centerY" constant="-80" id="SXK-Q4-stK"/>
+                            <constraint firstItem="EQD-Ag-6Mr" firstAttribute="trailing" secondItem="L5v-dL-9bJ" secondAttribute="trailingMargin" id="Xe0-IY-CY7"/>
+                            <constraint firstItem="e8C-qM-RUS" firstAttribute="leading" secondItem="L5v-dL-9bJ" secondAttribute="leadingMargin" id="Xql-Ri-t0Z"/>
+                            <constraint firstAttribute="centerX" secondItem="tDq-wH-0xE" secondAttribute="centerX" id="k09-so-G1H"/>
+                            <constraint firstItem="e8C-qM-RUS" firstAttribute="top" secondItem="J2o-eh-W5x" secondAttribute="bottom" id="try-Cg-04r"/>
+                            <constraint firstItem="EQD-Ag-6Mr" firstAttribute="leading" secondItem="L5v-dL-9bJ" secondAttribute="leadingMargin" id="yrF-E1-vjT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="saveButton" destination="tDq-wH-0xE" id="Ohm-Sm-FfR"/>
+                        <outlet property="triviaTextField" destination="EQD-Ag-6Mr" id="v3D-Ad-LEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbw-mc-Mfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="-548"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r3w-FL-X3v">
