@@ -1,7 +1,4 @@
----
-  tags: intermediate, tableviews, dataStore
-  language: objc
----
+
 
 # Location Trivia Data Store Associations
 
