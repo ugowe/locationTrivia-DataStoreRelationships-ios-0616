@@ -15,7 +15,4 @@
 
 @property (strong, nonatomic) FISLocation *location;
 
-@property (strong, nonatomic) NSArray *trivia;
-
-
 @end

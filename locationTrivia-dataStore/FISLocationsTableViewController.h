@@ -10,6 +10,4 @@
 
 @interface FISLocationsTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *locations;
-
 @end
