@@ -11,11 +11,10 @@
 #import "FISLocationsDataStore.h"
 
 @interface FISAddLocationViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *latitudeField;
 @property (weak, nonatomic) IBOutlet UITextField *longitudeField;
-- (IBAction)submitButtonTapped:(id)sender;
-- (IBAction)cancelButtonTapped:(id)sender;
 
 @end
 
@@ -45,10 +44,13 @@
 */
 
 - (IBAction)submitButtonTapped:(id)sender {
-    NSNumber *latitude = [NSNumber numberWithInteger:[self.latitudeField.text integerValue]];
-    NSNumber *longitude = [NSNumber numberWithInteger:[self.longitudeField.text integerValue]];
-    FISLocation *newLocation = [[FISLocation alloc] initWithName:self.nameField.text Latitude:latitude Longitude:longitude];
+    CGFloat latitude = [self.latitudeField.text doubleValue];
+    CGFloat longitude = [self.longitudeField.text doubleValue];
+    
+    FISLocation *newLocation = [[FISLocation alloc] initWithName:self.nameField.text latitude:latitude longitude:longitude];
+    
     [[FISLocationsDataStore sharedLocationsDataStore].locations addObject:newLocation];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
