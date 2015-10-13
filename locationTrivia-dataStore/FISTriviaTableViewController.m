@@ -14,8 +14,6 @@
 
 @interface FISTriviaTableViewController ()
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addTriviaButton;
-
 @end
 
 @implementation FISTriviaTableViewController
@@ -25,16 +23,13 @@
     [super viewDidLoad];
     
     
-    self.view.accessibilityIdentifier=@"Trivia Table";
-    self.view.accessibilityLabel=@"Trivia Table";
-    
-    self.addTriviaButton.accessibilityIdentifier = @"Add Trivia Button";
-    self.addTriviaButton.accessibilityLabel = @"Add Trivia Button";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
     self.tableView.accessibilityIdentifier = @"Trivia Table";
     self.tableView.accessibilityLabel = @"Trivia Table";
+    
+    self.navigationItem.rightBarButtonItem.accessibilityIdentifier = @"Add Trivia Button";
+    self.navigationItem.rightBarButtonItem.accessibilityLabel = @"Add Trivia Button";
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,6 +57,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TriviaCell" forIndexPath:indexPath];
     FISTrivium *currentTrivia = self.location.trivia[indexPath.row];
     cell.textLabel.text = currentTrivia.content;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", currentTrivia.likes];
     // Configure the cell...
     
     return cell;

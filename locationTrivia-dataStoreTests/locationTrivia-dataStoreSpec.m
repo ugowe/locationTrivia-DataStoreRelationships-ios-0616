@@ -28,7 +28,7 @@ describe(@"locationTriviaDataStore", ^{
     
         UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        navCon = [main instantiateViewControllerWithIdentifier:@"navCon"];
+        navCon = [main instantiateInitialViewController];
         
         [UIApplication sharedApplication].keyWindow.rootViewController = navCon;
         

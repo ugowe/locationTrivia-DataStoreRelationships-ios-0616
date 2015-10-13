@@ -22,10 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.accessibilityIdentifier = @"Locations Table";
-    self.view.accessibilityLabel = @"Locations Table";
-    
+        
     self.store = [FISLocationsDataStore sharedLocationsDataStore];
     
     // Uncomment the following line to preserve selection between presentations.
