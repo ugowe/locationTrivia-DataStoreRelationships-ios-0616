@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43DBB46D1AC33DD3001CCBCC /* locationTrivia-dataStoreSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DBB46C1AC33DD3001CCBCC /* locationTrivia-dataStoreSpec.m */; };
+		4D5549411BCC88F0001E3D77 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5549401BCC88F0001E3D77 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		72DD190619A64852004F3C2F /* FISAddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DD190519A64852004F3C2F /* FISAddLocationViewController.m */; };
 		AF7753828B1C2A231761ECF0 /* libPods-locationTrivia-dataStoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 212F7E7A9A7BE5F50EA130D1 /* libPods-locationTrivia-dataStoreTests.a */; };
 		D80B85F31958A02C0042C042 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80B85F21958A02C0042C042 /* Foundation.framework */; };
@@ -43,6 +44,7 @@
 		212F7E7A9A7BE5F50EA130D1 /* libPods-locationTrivia-dataStoreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-locationTrivia-dataStoreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		299344BF52AE996DC22173AC /* Pods-locationTrivia-dataStoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locationTrivia-dataStoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-locationTrivia-dataStoreTests/Pods-locationTrivia-dataStoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		43DBB46C1AC33DD3001CCBCC /* locationTrivia-dataStoreSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "locationTrivia-dataStoreSpec.m"; sourceTree = "<group>"; };
+		4D5549401BCC88F0001E3D77 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		72DD190419A64852004F3C2F /* FISAddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FISAddLocationViewController.h; sourceTree = "<group>"; };
 		72DD190519A64852004F3C2F /* FISAddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FISAddLocationViewController.m; sourceTree = "<group>"; };
 		AF2434A3D6F23C13C5512367 /* Pods-locationTrivia-dataStoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locationTrivia-dataStoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-locationTrivia-dataStoreTests/Pods-locationTrivia-dataStoreTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,7 +160,6 @@
 				D80B862D1958A0570042C042 /* FISLocation.m */,
 				D80B862E1958A0570042C042 /* FISTrivia.h */,
 				D80B862F1958A0570042C042 /* FISTrivia.m */,
-				D80B860A1958A02C0042C042 /* Images.xcassets */,
 				D80B85F91958A02C0042C042 /* Supporting Files */,
 			);
 			path = "locationTrivia-dataStore";
@@ -171,6 +172,8 @@
 				D80B85FB1958A02C0042C042 /* InfoPlist.strings */,
 				D80B85FE1958A02C0042C042 /* main.m */,
 				D80B86001958A02C0042C042 /* locationTrivia-dataStore-Prefix.pch */,
+				D80B860A1958A02C0042C042 /* Images.xcassets */,
+				4D5549401BCC88F0001E3D77 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				D80B86301958A0570042C042 /* Main.storyboard in Resources */,
 				D80B860B1958A02C0042C042 /* Images.xcassets in Resources */,
+				4D5549411BCC88F0001E3D77 /* Launch Screen.storyboard in Resources */,
 				D80B85FD1958A02C0042C042 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +454,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locationTrivia-dataStore/locationTrivia-dataStore-Prefix.pch";
 				INFOPLIST_FILE = "locationTrivia-dataStore/locationTrivia-dataStore-Info.plist";
@@ -465,7 +468,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "locationTrivia-dataStore/locationTrivia-dataStore-Prefix.pch";
 				INFOPLIST_FILE = "locationTrivia-dataStore/locationTrivia-dataStore-Info.plist";
