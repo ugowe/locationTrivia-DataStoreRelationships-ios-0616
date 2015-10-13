@@ -137,8 +137,8 @@ describe(@"FISAddLocationViewController", ^{
             FISLocation *savedLocation = [store.locations lastObject];
             
             expect(savedLocation.name).to.equal(testLocationName);
-            expect(savedLocation.latitude).to.equal(@([testLocationLat integerValue]));
-            expect(savedLocation.longitude).to.equal(@([testLocationLong integerValue]));
+            expect(savedLocation.latitude).to.equal(@([testLocationLat doubleValue]));
+            expect(savedLocation.longitude).to.equal(@([testLocationLong doubleValue]));
         });
         
         it(@"dismisses the AddLocationsVC", ^{

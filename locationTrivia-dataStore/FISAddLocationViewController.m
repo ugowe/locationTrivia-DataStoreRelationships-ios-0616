@@ -13,9 +13,14 @@
 
 
 @interface FISAddLocationViewController () <CLLocationManagerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *latitudeField;
 @property (weak, nonatomic) IBOutlet UITextField *longitudeField;
+
+@property (weak, nonatomic) IBOutlet UIButton *useCurrentLocationButton;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
@@ -27,7 +32,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setupAccessibilityLabels];
+    [self setupLocationManager];
+}
+
+-(void) setupAccessibilityLabels
+{
+    self.nameField.accessibilityLabel = @"nameField";
+    self.nameField.accessibilityIdentifier = @"nameField";
     
+    self.latitudeField.accessibilityLabel = @"latitudeField";
+    self.latitudeField.accessibilityIdentifier = @"latitudeField";
+    
+    self.longitudeField.accessibilityLabel = @"longitudeField";
+    self.longitudeField.accessibilityIdentifier = @"longitudeField";
+    
+    self.submitButton.accessibilityLabel = @"saveButton";
+    self.submitButton.accessibilityIdentifier = @"saveButton";
+    
+    self.cancelButton.accessibilityLabel = @"cancelButton";
+    self.cancelButton.accessibilityIdentifier = @"cancelButton";
+}
+
+- (void)setupLocationManager {
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;

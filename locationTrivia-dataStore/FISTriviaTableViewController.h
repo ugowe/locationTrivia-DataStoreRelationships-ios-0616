@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FISTrivium.h"
+#import "FISLocation.h"
 
-@class FISLocation;
 
 @interface FISTriviaTableViewController : UITableViewController
 

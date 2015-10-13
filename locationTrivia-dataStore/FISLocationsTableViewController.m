@@ -33,6 +33,12 @@
     
     self.tableView.accessibilityLabel = @"Locations Table";
     self.tableView.accessibilityIdentifier = @"Locations Table";
+    self.navigationItem.rightBarButtonItem.accessibilityLabel = @"addButton";
+    self.navigationItem.rightBarButtonItem.accessibilityIdentifier = @"addButton";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

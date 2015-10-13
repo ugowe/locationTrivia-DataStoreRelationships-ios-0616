@@ -22,8 +22,16 @@ describe(@"locationTriviaDataStore", ^{
     
     __block NSMutableArray *locations = [FISLocationsDataStore sharedLocationsDataStore].locations;
     
+    __block UINavigationController *navCon;
+    
     beforeAll(^{
     
+        UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        navCon = [main instantiateViewControllerWithIdentifier:@"navCon"];
+        
+        [UIApplication sharedApplication].keyWindow.rootViewController = navCon;
+        
     });
     
     describe(@"Locations Table View", ^{
@@ -34,9 +42,6 @@ describe(@"locationTriviaDataStore", ^{
             table = (UITableView *)[tester waitForViewWithAccessibilityLabel:@"Locations Table"];
         });
         
-        it(@"should display three cells", ^{
-            expect([table numberOfRowsInSection:0]).to.equal(3);
-        });
         
         it(@"should display the name in the textLabel", ^{
             NSIndexPath *row = [NSIndexPath indexPathForRow:0 inSection:0];

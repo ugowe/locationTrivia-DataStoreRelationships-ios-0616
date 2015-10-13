@@ -116,9 +116,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Apu-Sa-2Z9" id="eaS-67-tcu"/>
                         <outlet property="latitudeField" destination="rCh-p0-95b" id="RJ3-RV-Run"/>
                         <outlet property="longitudeField" destination="4V2-b3-c2F" id="FSz-5i-5hR"/>
                         <outlet property="nameField" destination="5a8-ws-1Dw" id="kb6-56-yhZ"/>
+                        <outlet property="submitButton" destination="6d5-9p-VH7" id="Ld1-ck-ahi"/>
+                        <outlet property="useCurrentLocationButton" destination="cZH-yj-QcL" id="lKj-wb-11B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cj1-dy-OyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,6 +226,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="e8C-qM-RUS" id="u6z-7p-2Zg"/>
                         <outlet property="saveButton" destination="tDq-wH-0xE" id="Ohm-Sm-FfR"/>
                         <outlet property="triviaTextField" destination="EQD-Ag-6Mr" id="v3D-Ad-LEE"/>
                     </connections>
@@ -234,7 +238,7 @@
         <!--Navigation Controller-->
         <scene sceneID="r3w-FL-X3v">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SAR-7n-Hfp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navCon" automaticallyAdjustsScrollViewInsets="NO" id="SAR-7n-Hfp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5w1-YU-aQM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

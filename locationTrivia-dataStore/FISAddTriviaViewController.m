@@ -11,8 +11,10 @@
 #import "FISLocation.h"
 
 @interface FISAddTriviaViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *triviaTextField;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 

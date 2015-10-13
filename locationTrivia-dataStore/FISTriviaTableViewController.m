@@ -13,6 +13,7 @@
 
 
 @interface FISTriviaTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addTriviaButton;
 
 @end
@@ -34,6 +35,10 @@
     
     self.tableView.accessibilityIdentifier = @"Trivia Table";
     self.tableView.accessibilityLabel = @"Trivia Table";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
