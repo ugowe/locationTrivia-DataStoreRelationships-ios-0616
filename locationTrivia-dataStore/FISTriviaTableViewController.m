@@ -2,14 +2,15 @@
 //  FISTriviaTableViewController.m
 //  locationTrivia-tableviews
 //
-//  Created by Joe Burgess on 6/20/14.
+//  Created by Chris Gonzales on 8/20/14.
 //  Copyright (c) 2014 Joe Burgess. All rights reserved.
 //
 
 #import "FISTriviaTableViewController.h"
 #import "FISAddTriviaViewController.h"
-#import "FISTrivia.h"
+#import "FISTrivium.h"
 #import "FISLocation.h"
+
 
 @interface FISTriviaTableViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addTriviaButton;
@@ -17,15 +18,6 @@
 @end
 
 @implementation FISTriviaTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -40,8 +32,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.accessibilityIdentifier = @"Trivia Table";
+    self.tableView.accessibilityLabel = @"Trivia Table";
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,26 +44,20 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return [self.location.trivia count];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basicCell" forIndexPath:indexPath];
-    
-    FISTrivia *trivia = self.location.trivia[indexPath.row];
-    cell.textLabel.text = trivia.content;
-    
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TriviaCell" forIndexPath:indexPath];
+    FISTrivium *currentTrivia = self.trivia[indexPath.row];
+    cell.textLabel.text = currentTrivia.content;
+    // Configure the cell...
     
     return cell;
 }

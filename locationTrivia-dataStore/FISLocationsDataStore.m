@@ -9,6 +9,7 @@
 #import "FISLocationsDataStore.h"
 
 @implementation FISLocationsDataStore
+
 + (instancetype)sharedLocationsDataStore {
     static FISLocationsDataStore *_sharedLocationsDataStore = nil;
     static dispatch_once_t onceToken;

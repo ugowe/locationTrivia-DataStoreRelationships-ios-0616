@@ -2,59 +2,54 @@
 //  FISLocationsTableViewController.m
 //  locationTrivia-tableviews
 //
-//  Created by Joe Burgess on 6/20/14.
+//  Created by Chris Gonzales on 8/20/14.
 //  Copyright (c) 2014 Joe Burgess. All rights reserved.
 //
-#import "FISLocation.h"
+
 #import "FISLocationsTableViewController.h"
 #import "FISTriviaTableViewController.h"
+#import "FISLocationsDataStore.h"
+#import "FISLocation.h"
 
 @interface FISLocationsTableViewController ()
+
+@property (strong, nonatomic) FISLocationsDataStore *store;
 
 @end
 
 @implementation FISLocationsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.view.accessibilityIdentifier=@"Locations Table";
-    self.view.accessibilityLabel=@"Locations Table";
+    self.view.accessibilityIdentifier = @"Locations Table";
+    self.view.accessibilityLabel = @"Locations Table";
     self.store = [FISLocationsDataStore sharedLocationsDataStore];
     FISLocation *location1 = [[FISLocation alloc] initWithName:@"The Empire State Building"
-                                                      Latitude:@40.7484
-                                                     Longitude:@-73.9857];
+                                                      latitude:40.7484
+                                                     longitude:-73.9857];
     
-    FISTrivia *trivia1A = [[FISTrivia alloc] initWithContent:@"1,454 Feet Tall" Likes:4];
-    FISTrivia *trivia1B = [[FISTrivia alloc] initWithContent:@"Cost $24,718,000 to build" Likes:2];
+    FISTrivium *trivia1A = [[FISTrivium alloc] initWithContent:@"1,454 Feet Tall" likes:4];
+    FISTrivium *trivia1B = [[FISTrivium alloc] initWithContent:@"Cost $24,718,000 to build" likes:2];
     
     [location1.trivia addObjectsFromArray:@[trivia1A, trivia1B]];
     
     FISLocation *location2 = [[FISLocation alloc] initWithName:@"Bowling Green"
-                                                      Latitude:@41.3739
-                                                     Longitude:@-83.6508];
+                                                      latitude:41.3739
+                                                     longitude:-83.6508];
     
-    FISTrivia *trivia2A = [[FISTrivia alloc] initWithContent:@"NYC's oldest park" Likes:8];
-    FISTrivia *trivia2B = [[FISTrivia alloc] initWithContent:@"Made a park in 1733" Likes:2];
-    FISTrivia *trivia2C = [[FISTrivia alloc] initWithContent:@"Charging Bull was created in 1989" Likes:0];
+    FISTrivium *trivia2A = [[FISTrivium alloc] initWithContent:@"NYC's oldest park" likes:8];
+    FISTrivium *trivia2B = [[FISTrivium alloc] initWithContent:@"Made a park in 1733" likes:2];
+    FISTrivium *trivia2C = [[FISTrivium alloc] initWithContent:@"Charging Bull was created in 1989" likes:0];
     
     
     [location2.trivia addObjectsFromArray:@[trivia2A, trivia2B, trivia2C]];
     
     FISLocation *location3 = [[FISLocation alloc] initWithName:@"Statue Of Liberty"
-                                                      Latitude:@40.6892
-                                                     Longitude:@74.0444];
-    FISTrivia *trivia3A = [[FISTrivia alloc] initWithContent:@"Gift from the french" Likes:6];
+                                                      latitude:40.6892
+                                                     longitude:74.0444];
+    FISTrivium *trivia3A = [[FISTrivium alloc] initWithContent:@"Gift from the french" likes:6];
     
     [location3.trivia addObjectsFromArray:@[trivia3A]];
     
@@ -63,14 +58,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    self.tableView.accessibilityLabel = @"Locations Table";
+    self.tableView.accessibilityIdentifier = @"Locations Table";
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,30 +70,23 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.store.locations count];
+    return [self.locations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell" forIndexPath:indexPath];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RightDetail" forIndexPath:indexPath];
+    FISLocation *currentLocation = self.locations[indexPath.row];
+    cell.textLabel.text = currentLocation.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu", currentLocation.trivia.count];
+
+    // Configure the cell...
     
-    
-    FISLocation *location = self.store.locations[indexPath.row];
-    
-    cell.textLabel.text = location.name;
-    
-    //    NSString *triviaCount = [location numberOfTriva];
-    
-    cell.detailTextLabel.text = [location numberOfTriva];
     return cell;
 }
 
@@ -146,23 +128,23 @@
  }
  */
 
+#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+
     if (![segue.identifier isEqualToString:@"addLocation"]) {
         
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         FISLocation *location = self.store.locations[ip.row];
         
-        FISTriviaTableViewController *triviaVC = segue.destinationViewController;
+        FISTriviaTableViewController *triviaTVC = segue.destinationViewController;
         
-        triviaVC.location = location;
+        triviaTVC.location = location;
     }
-    
-    
 }
 
 @end

@@ -11,7 +11,7 @@
 #import "Expecta.h"
 #import "KIF.h"
 #import "FISLocation.h"
-#import "FISTrivia.h"
+#import "FISTrivium.h"
 #import "FISLocationsTableViewController.h"
 #import "FISAppDelegate.h"
 #import "FISLocationsDataStore.h"
