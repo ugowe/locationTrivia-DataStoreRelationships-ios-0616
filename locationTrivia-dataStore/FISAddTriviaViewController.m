@@ -23,16 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)save:(UIButton *)sender
+- (IBAction)saveButtonTapped:(UIButton *)sender
 {
     FISTrivium *trivium = [[FISTrivium alloc] initWithContent:self.triviaTextField.text likes:0];
     [self.location.trivia addObject:trivium];
@@ -40,7 +33,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)cancel:(id)sender
+- (IBAction)cancelButtonTapped:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -4,14 +4,14 @@
 
 ## Goals
 
-1. Set up a shared instance using a singleton.
+1. Set up a shared data store using a singleton.
 2. Use a shared instance to pass information between a group of view controllers.
 
 ## Review
 
-A shared instance has a special initializer that only allows its class object to create a single instance in the lifespan of the application, with any subsequent calls to the initializer pointing to the one instance already instantiated. You'll often hear this referred to as a "singleton." The practical value of this special ability permits this one shared instance (and whatever data it holds onto) to be accessed by various other objects in your program. This is very useful for organizing your application's data into one place--hence the designation in this case of "Data Store."
+From time to time, we may want one instance of a class (and whatever data it holds onto) to be accessed by many other objects in your program. This is very useful for organizing your application's data into one place--hence the designation in this case of "Data Store." One way to accomplish this is with a **shared instance** of that class. A shared instance is typically accessed by a class method which creates only one instance over the lifetime of the application. Any and all calls to that class method return the one instance already instantiated. You'll often hear this referred to as a "singleton." 
 
-The `dispatch_once` token is what permits this behavior. It's kind of like a punch card that reads 'admit one.' It retains all of its identifying information, but won't permit the application to run the block more than once. In the current case, that means only instantiating the shared instance one time. The code that Apple provides for creating such a shared instance is this somewhat cryptic set of code: 
+The `dispatch_once` function from Grand Central Dispatch (GCD) is what permits this behavior. It's kind of like a punch card that reads 'admit one.' It retains all of its identifying information, but won't permit the application to run the block argument more than once. In the current case, that means only instantiating the shared instance one time. The code that Apple provides for creating such a shared instance is this somewhat cryptic set of code: 
 
 ```objc
 + (instancetype)shared<#name#> {
@@ -38,7 +38,8 @@ In the scope of this lab we're going to call this class `FISLocationsDataStore` 
     return _sharedLocationsDataStore;
 }
 ```
-You'll notice that it's calling an initializer which we need to customize. Since we want our data store to hold our `FISLocation` objects, let's give it a property that's an `NSMutableArray` called 'locations' and instantiate it in the initializer.
+
+You'll notice that it's calling a standard `init` on the class, so we'll need to customize that. Since we want our data store to hold our `FISLocation` objects, let's give it a property that's an `NSMutableArray` called 'locations' and instantiate it in the initializer.
 
 ```objc
 // FISLocationsDataStore.h
@@ -58,7 +59,8 @@ You'll notice that it's calling an initializer which we need to customize. Since
     return self;
 }
 ```
-Now that we have our singleton class set up, we can access it from any view controller by calling the `shared<#name#>` initializer that we previously set up.
+
+Now that we have our singleton class set up, we can access it from any view controller by calling the `shared<#name#>` method that we previously set up.
 
 ```objc
 - (void)viewDidLoad {
@@ -68,7 +70,6 @@ Now that we have our singleton class set up, we can access it from any view cont
         [FISLocationsDataStore sharedLocationsDataStore];
 }
 ```
-While it isn't necessary to, it is also possible to set a shared instance as a property within another class.
 
 This next lab already has these steps set up for you. Take a moment to look over the data store's files to see how they're laid out, then solve the lab by connecting a new view controller to the data store.
 
@@ -77,16 +78,16 @@ This next lab already has these steps set up for you. Take a moment to look over
 1. The previously-used `FISLocation` and `FISTrivium` data models have been provided for you. Set up the `FISLocationsDataStore` class to be a singleton class. It should have one property, an `NSMutableArray` called `locations`. Override the default initializer to populate the `locations` array with the starting data provided at the end of this readme in the `generateStartingLocationsData` method.
 
 2. Create a storyboard named `Main.storyboard`. Add a table view controller embedded in a navigation controller which is the initial view controller. This first table view controller should be connected to a class called `FISLocationsTableViewController`.
-  * In `viewDidLoad`, set the `tableview` property's accessibility label & identifier to `@"Locations Table"` (this cannot be done in Interface Builder).
+  * In `viewDidLoad`, set the `tableView` property's accessibility label & identifier to `@"Locations Table"` (this cannot be done in Interface Builder).
   * Give the table view controller a `FISLocationsDataStore` property called `store` and use the "shared instance" method to instantiate it.
   * In storyboard, set the table view's prototype cell type to "right detail". Have the table view use the `textLabel` to show the name of the locations, and the `detailTextLabel` to display the number of trivia it has associated with it.
 
 3. Add a second table view controller named `FISTriviaTableViewController` accessed by a show segue from a table view cell in the locations table view controller. In `viewDidLoad`, set the `tableView`'s accessibility label & identifier to `@"Trivia Table"`.
   * Give the view controller a `FISLocation` property called `location`, which should be set with the relevant `FISLocation` object in `FISLocationsTableViewController`'s `prepareForSegue:sender:` method.
-  * Use the `location` property's `trivia` array to load the table view. Each cell should display the `FISTrivium` objects "content" in the `textLabel`, and the number of "likes" in the `detailTextLabel`.
+  * Use the `location` property's `trivia` array to load the table view. Each cell should display the `FISTrivium` object's "content" in the `textLabel`, and the number of "likes" in the `detailTextLabel`.
 
 4. Create a new view controller named `FISAddLocationViewController` that will be presented modally from the locations table view controller. 
-  * Add three text fields for the name, latitude, and longitude. Set their accessibility label & identifiers to `@"nameField"`, `@"latitudeField`, and `@"longitudeField"` respectively.
+  * Add three text fields for the name, latitude, and longitude. Set their accessibility labels & identifiers to `@"nameField"`, `@"latitudeField`, and `@"longitudeField"` respectively.
   * Add two buttons, one to "cancel" adding a location, and one to "submit" a new location with the information entered in the text fields. Set their accessibility labels & identifiers to `@"cancelButton"` and `@"submitButton"` respectively.
   * When the "cancel" button is tapped, dismiss the view controller.
   * When the "submit" button is tapped, use the information in the text fields to create new a instance of `FISLocation` and add it the the data store's `locations` array. Then dismiss the view controller.
@@ -141,4 +142,4 @@ This next lab already has these steps set up for you. Take a moment to look over
 
 ## Advanced
 
-Add functionality to get the users actual location. Keep in mind that significant changes to `CLLocation` were recently made with iOS 8, so resources older the September 2014 might be incorrect.
+Add functionality to get the users actual location. Beware that significant changes to `CLLocation` were made with iOS 8, so resources older than September 2014 might be incorrect.

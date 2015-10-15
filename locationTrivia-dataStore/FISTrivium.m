@@ -7,7 +7,7 @@
 
 - (instancetype)init {
     self = [self initWithContent:@""
-                           likes:0   ];
+                           likes:0];
     return self;
 }
 

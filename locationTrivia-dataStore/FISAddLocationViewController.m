@@ -66,14 +66,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:YES];
+    [super viewDidDisappear:animated];
     [self.locationManager stopUpdatingLocation];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - CLLocationManager

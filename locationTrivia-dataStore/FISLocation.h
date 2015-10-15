@@ -10,7 +10,6 @@
 @property (nonatomic) CGFloat longitude;
 @property (strong, nonatomic) NSMutableArray *trivia;
 
-- (instancetype)init;
 - (instancetype)initWithName:(NSString *)name
                     latitude:(CGFloat)latitude
                    longitude:(CGFloat)longitude;
