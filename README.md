@@ -143,3 +143,5 @@ This next lab already has these steps set up for you. Take a moment to look over
 ## Advanced
 
 Add functionality to get the users actual location. Beware that significant changes to `CLLocation` were made with iOS 8, so resources older than September 2014 might be incorrect.
+
+<a href='https://learn.co/lessons/locationTrivia-DataStoreRelationships' data-visibility='hidden'>View this lesson on Learn.co</a>
